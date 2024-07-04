@@ -21,3 +21,12 @@ docker run dit --name myubuntu ubuntu
 소위 서버라고 불림 \
 백그라운드에서 실행되는 프로그램 , 메모리에 상주하면서 특정 요청이 오면 \
 즉시 대응할수 있도록 대기중인 프로세스
+
+### docker exec 명령어
+
+1. OS (ubuntu) \
+docker run dit ubuntu bash \
+docker attach 컨테이너 ID
+2. Daemon (Httpd) \
+docker run -d -p 8080:80 httpd \
+docker exec -it 컨테이너ID bash
