@@ -30,3 +30,14 @@ docker attach 컨테이너 ID
 2. Daemon (Httpd) \
 docker run -d -p 8080:80 httpd \
 docker exec -it 컨테이너ID bash
+
+### docker volume (-v)
+
+컨테이너와 호스트 운영체제 간에 데이터를 공유하거나 저장하기 위한 기능
+
+1. docker run -d -p 8080:80 -v c:\users\PC2303\webapp:/usr/local/apache2/htdocs httpd
+2. docker exec -it 컨테이너명 bash \
+위와 같이 구동시 vscode를 통하여 webapp에 index.html 을 생성한 후 \
+localhost:8080 에 접근하면 해당 index.html이 출력된다.
+
+
