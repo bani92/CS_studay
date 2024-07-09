@@ -40,4 +40,43 @@ docker exec -it 컨테이너ID bash
 위와 같이 구동시 vscode를 통하여 webapp에 index.html 을 생성한 후 \
 localhost:8080 에 접근하면 해당 index.html이 출력된다.
 
+### docker hub 업로드
+
+1. Create repository
+2. docker run -dit ubuntu
+3. vi는 불가능 
+4. apt update
+5. apt install vim
+6. exit
+7. 도커 컨테이너를 다시 실행
+8. docker attach 컨테이너ID
+9. docker commit 컨테이너ID 아이디/리파지토리에 적어준 이름:1.0
+10. docker push 아이디/리파지토리 적어준 이름:1.0
+
+위와 같이 진행하면 깃처럼 pull을 받을 수 있음
+
+### docker 삭제방법(윈도우)
+
+for /f "delims=" %A in ('docker ps -q') do (set rm1=%A) 
+for /f "delims=" %A in ('docker ps -a -q') do (set rm2=%A) 
+for /f "delims=" %A in ('docker images -q') do (set rm3=%A)
+docker stop %rm1%
+docker rm %rm2%
+docker rmi -f %rm3%
+
+### docker file
+
+1. 윈도우에 Dockerfile 이라고 생성 (.txt 삭제, Dockerfile이 키워드임)
+2. FROM httpd
+   COPY ./webapp /usr/local/apache2/htdocs
+   CMD ["httpd-foreground"]
+3. 폴더 안에 webapp 이라는 폴더 생성
+4. index.html 생성 (기본값 적기)
+5. docker build -t webserver ./ (이미지 생성완료, ./ <- 현재 폴더)
+6. docker run -dit -p 8080:80 컨테이너이름
+7. localhost:8080 확인 or docker exec -it 컨테이너이름 bash 진입 후 htdocs 경로 확인
+
+
+
+
 
