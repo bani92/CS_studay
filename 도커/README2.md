@@ -23,3 +23,19 @@ CMD - 옵션(변수)
 
 ### 구동되고있는 컨테이너 로그보기
 docker logs 컨테이너ID
+
+### Docker file step3 - RUN 
+Dockerfile 생성 
+
+FROM ubuntu
+
+RUN apt-get update   
+RUN apt-get install -y nginx
+
+WORKDIR /var/www/html
+
+COPY ./webapp/index.html ./index.nginx-debian.html
+
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+
+docker run -dit -p 8080:80 nginx-server
