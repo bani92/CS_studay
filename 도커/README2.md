@@ -39,3 +39,8 @@ COPY ./webapp/index.html ./index.nginx-debian.html
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
 
 docker run -dit -p 8080:80 nginx-server
+
+
+### mime.types
+include       /etc/nginx/mime.types\
+MIME 타입은 클라이언트에게 전송된 파일의 형식을 식별하여, 클라이언트가 해당 파일을 올바르게 처리하고 표시할 수 있도록 합니다.
